@@ -8,7 +8,7 @@ class AttendanceService
 {
     public function createAttendanceRecord(array $data)
     {
-        return Attendance::create($data);
+        return Attendance::uploadExcel($data);
     }
 
     public function getAttendanceRecords()

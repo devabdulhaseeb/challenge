@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('schedule_id'); 
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
-            $table->timestamps();
+           
             $table->foreign('employee_id')->references('id')->on('employee');
             $table->foreign('schedule_id')->references('id')->on('schedule');
         });
