@@ -3,12 +3,14 @@
 namespace App\AppHumanResources\Attendance\Application;
 
 use App\AppHumanResources\Attendance\Domain\Attendance;
+use Illuminate\Http\Request;
 
 class AttendanceService
 {
-    public function createAttendanceRecord(array $data)
+    public function createAttendanceRecord(Request $request)
     {
-        return Attendance::uploadExcel($data);
+        $response = Attendance::uploadExcel($request);
+        // return 
     }
 
     public function getAttendanceRecords()

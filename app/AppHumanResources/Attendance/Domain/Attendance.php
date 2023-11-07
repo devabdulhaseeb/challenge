@@ -12,7 +12,7 @@ class Attendance extends Model
     protected $primaryKey = 'id';
     protected $guarded = ['created_at','updated_at'];
 
-    public static function uploadExcel()
+    public static function uploadExcel($data)
     {
         
     }

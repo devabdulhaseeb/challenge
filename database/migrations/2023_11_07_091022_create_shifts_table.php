@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('shifts', function (Blueprint $table) {
             $table->id();  
-            $table->string('slot'); 
+            $table->string('slot')->nullable(); 
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
          
