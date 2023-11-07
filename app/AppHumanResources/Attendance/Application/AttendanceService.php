@@ -1,11 +1,11 @@
 <?php
 
 namespace App\AppHumanResources\Attendance\Application;
-
+use App\Http\Controllers\Controller;
 use App\AppHumanResources\Attendance\Domain\Attendance;
 use Illuminate\Http\Request;
 
-class AttendanceService
+class AttendanceService extends Controller
 {
     public function createAttendanceRecord(Request $request)
     {
