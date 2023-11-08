@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "f2e23cfb-ad0e-48a5-8543-79acbdaf4afe",
+		"name": "Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16790172",
+		"_collection_link": "https://www.postman.com/crimson-equinox-104958/workspace/vuejs-api/collection/16790172-f2e23cfb-ad0e-48a5-8543-79acbdaf4afe?action=share&source=collection_link&creator=16790172"
+	},
+	"item": [
+		{
+			"name": "createAttendanceRecord",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "excel_file",
+							"type": "file",
+							"src": "/C:/Users/Haseeb/Desktop/dummy attendance.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{local_url}}/create-attendance",
+					"host": [
+						"{{local_url}}"
+					],
+					"path": [
+						"create-attendance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAttendanceRecord",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "excel_file",
+							"type": "file",
+							"src": "/C:/Users/Haseeb/Desktop/dummy attendance.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{local_url}}/get-attendance",
+					"host": [
+						"{{local_url}}"
+					],
+					"path": [
+						"get-attendance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findDuplicates",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "input_value",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{local_url}}/find-duplicates",
+					"host": [
+						"{{local_url}}"
+					],
+					"path": [
+						"find-duplicates"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local_url",
+			"value": "http://127.0.0.1:8000/api",
+			"type": "string"
+		}
+	]
+}

@@ -1,6 +1,7 @@
 <?php
 
 use App\AppHumanResources\Attendance\Application\AttendanceService;
+use App\AppHumanResources\Attendance\Application\ElementsService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/create-attendance', [AttendanceService::class, 'createAttendanceRecord']);
 Route::get('/get-attendance', [AttendanceService::class, 'getAttendanceRecords']);
+Route::post('/find-duplicates',[ElementsService::class, 'elementFinder']);
