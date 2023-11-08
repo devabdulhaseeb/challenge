@@ -31,11 +31,11 @@ const ProjectTables = () => {
   })
   .catch(error => {
     console.log(error);
-    Swal.fire({
-      icon: 'error',
-      title: `<h5 style="color: red">${error.response.data.message}</h5>`,
-      confirmButtonColor: 'red',
-    });
+    // Swal.fire({
+    //   icon: 'error',
+    //   title: `<h5 style="color: red">${error.response.data.message}</h5>`,
+    //   confirmButtonColor: 'red',
+    // });
     setShowLoader(false);
   });
 };
@@ -85,7 +85,7 @@ const ProjectTables = () => {
                 </tr>
               ))}
             </tbody>
-            
+             
           </Table>
           ):(<div className="col-lg-12 text-center">
             <h4>No Data Available</h4>
