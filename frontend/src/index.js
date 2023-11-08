@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter } from "react-router-dom";
 import Loader from "./layouts/loader/Loader";
+import './Config/ApiConfig';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

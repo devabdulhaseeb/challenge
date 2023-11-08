@@ -48,13 +48,13 @@ const Starter = () => {
   return (
     <div>
       
-      {/***Table ***/}
+  
       <Row>
         <Col lg="12">
           <ProjectTables />
         </Col>
       </Row>
-      {/***Blog Cards***/}
+    
       
     </div>
   );

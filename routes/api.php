@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/create-attendance', [AttendanceService::class, 'createAttendanceRecord']);
+Route::get('/get-attendance', [AttendanceService::class, 'getAttendanceRecords']);

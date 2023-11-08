@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 // use Symfony\Component\HttpFoundation\Response;
 use App\Services\JsonResponseService;
+use App\Services\ResponseService;
 use Illuminate\Support\Facades\Response;
 class Controller extends BaseController
 {
@@ -24,36 +25,14 @@ class Controller extends BaseController
     /**
      * MainController constructor.
      */
-    public function __construct()
+    public function __construct(ResponseService $response)
     {
-        $this->response = new JsonResponseService;
-        $requestPerPage = request('per_page', config('app.pagination'));
-        app()->setLocale(request('lang') ? request('lang') : 'en');
-        $this->pagination = $requestPerPage > 100 ? 100 : $requestPerPage;
+        $this->response = $response;
+      
     }
 
     /**
      * @return \Illuminate\Http\JsonResponse
      */
-    // public function __invoke()
-    // {
-    //     return $this->response->fail([], 400, Response::HTTP_NOT_FOUND);
-    // }
-
-    final protected function sendResponse(array|null|object $data = [], string $message = "", int $code = 200)
-    {
-        return Response::make([
-            "success" => true,
-            "message" => $message,
-            "data" => $data
-        ], $code);
-    }
-
-    final protected function sendError(string $message = "", int|string $code = 500)
-    {
-        return Response::make([
-            "success" => false,
-            "message" => $message,
-        ], $code);
-    }
+ 
 }
