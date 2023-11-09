@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Location extends Model
 {
     use HasFactory;
+    protected $table = 'location';
+    protected $primaryKey = 'id';
+    protected $guarded = ['created_at','updated_at'];
 }

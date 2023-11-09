@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
+    protected $table = 'employee';
+    protected $primaryKey = 'id';
+    protected $guarded = ['created_at','updated_at'];
 }
