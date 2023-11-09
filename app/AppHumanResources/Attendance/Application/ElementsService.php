@@ -6,49 +6,47 @@ use App\Services\ResponseService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Validator;
 
 class ElementsService extends Controller
 {
-    protected $responseService;
-
-    public function __construct()
-    {
-        $this->responseService = new ResponseService();
-    }
-
+    
     public function elementFinder(Request $request)
     {
-        $input = $request->input('input_value');
+        //use the postman collection for testing.. which is in the root directory of my project
+        $rules = [
+            'input_value' => 'required|array',
+        ];
 
-        if (!is_numeric($input)) {
-            return response()->json(['error' => 'Invalid input'], 400);
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => 'Invalid input. The input_value field must be an array.'], 400);
         }
 
-        $n = (int)$input;
-        if ($n < 0) {
-            return response()->json(['error' => 'Input should be a non-negative number'], 400);
-        }
+         $arr = $request->input('input_value', []);
 
-        $array = range(0, $n - 1);
-        $arrayWithDuplicates = array_merge($array, $array); // Duplicate elements in the array
+         if (empty($arr)) {
+             return response()->json(['error' => 'Input array is empty']);
+         }
+ 
+         $elementCounts = [];
+ 
+         $duplicates = [];
+ 
 
-        $duplicates = $this->findDuplicateElements($arrayWithDuplicates);
-
-        return response()->json($duplicates);
-    }
-
-    private function findDuplicateElements(array $a)
-    {
-        $result = [];
-        $count = array_count_values($a);
-
-        foreach ($count as $key => $value) {
-            if ($value > 1) {
-                $result[] = $key;
-            }
-        }
-
-        return $result;
+         foreach ($arr as $element) {
+             if (array_key_exists($element, $elementCounts)) {
+                 $elementCounts[$element]++;
+             } else {
+                 $elementCounts[$element] = 1;
+             }
+             if ($elementCounts[$element] === 2) {
+                 $duplicates[] = $element;
+             }
+         }
+ 
+         return response()->json(['duplicates' => implode(" ",$duplicates)]);
     }
 
 
